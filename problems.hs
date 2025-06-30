@@ -37,3 +37,11 @@ isPalindrome (x:xs) = x == last xs && (isPalindrome $ init $ xs)
 -- or using reverse, simply:
 --isPalindrome xs = xs == (reverse xs)
 
+-- Problem 7: Flatten a nested list structure.
+data NestedList a = Elem a | List [NestedList a]
+
+flatten :: NestedList a -> [a]
+flatten (List []) = []
+flatten (Elem x) = [x]
+flatten (List (x:xs)) = flatten x ++ flatten (List xs) 
+
