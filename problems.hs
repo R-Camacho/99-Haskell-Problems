@@ -16,3 +16,9 @@ elementAt (x:_) 1 = x
 elementAt (_:xs) k = elementAt xs (k - 1)
 elementAt _ _ = undefined
 
+-- Problem 4: Find the number of elements in a list.
+myLenght :: [a] -> Int
+myLenght [] = 0
+myLenght [x] = 1
+myLenght (_:xs) = 1 + myLenght xs
+
