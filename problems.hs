@@ -22,3 +22,8 @@ myLenght [] = 0
 myLenght [x] = 1
 myLenght (_:xs) = 1 + myLenght xs
 
+-- Problem 5: Reverse a list.
+myReverse :: [a] -> [a]
+myReverse [] = []
+myReverse (x:xs) = myReverse xs ++ [x]
+
