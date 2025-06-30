@@ -27,3 +27,13 @@ myReverse :: [a] -> [a]
 myReverse [] = []
 myReverse (x:xs) = myReverse xs ++ [x]
 
+-- Problem 6: Find out whether a list is a palindrome.
+
+isPalindrome :: (Eq a) => [a] -> Bool
+isPalindrome [] = True
+isPalindrome [_] = True 
+isPalindrome (x:xs) = x == last xs && (isPalindrome $ init $ xs)
+
+-- or using reverse, simply:
+--isPalindrome xs = xs == (reverse xs)
+
