@@ -53,3 +53,11 @@ compress (x:x1:xs)
     | x == x1   = compress $ x1 : xs
     | otherwise = x : compress (x1 : xs)
 
+-- Problem 9: Pack consecutive duplicates of list elements into sublists.
+pack :: (Eq a) => [a] -> [[a]]
+pack []  = []
+pack [x] = [[x]]
+pack (x:xs) 
+    | x `elem` (head (pack xs)) = (x : (head $ pack xs)) : (tail $ pack xs)
+    | otherwise                 = [[x]] ++ pack (xs)
+
