@@ -71,3 +71,15 @@ data EncodedItem a = Single a | Multiple Int a
 encodeModified :: (Eq a) => [a] -> [EncodedItem a]
 encodeModified xs = map (\x -> if length x == 1 then Single $ head x else Multiple (length x) (head x)) $ pack xs
 
+-- Problem 12: Decode a run-length encoded list.Solutions
+-- Given a run-length code list generated as specified in problem 11. Construct its uncompressed version.
+
+decodeModified :: [EncodedItem a] -> [a]
+decodeModified xs = concat $ map (\x -> replicate (getNumber x) (getElement x) ) xs
+    where 
+        getNumber (Single x)      = 1
+        getNumber (Multiple n _)  = n
+
+        getElement (Single x)     = x
+        getElement (Multiple _ x) = x
+
