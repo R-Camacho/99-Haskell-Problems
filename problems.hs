@@ -17,10 +17,10 @@ elementAt (_:xs) k = elementAt xs (k - 1)
 elementAt _ _ = undefined
 
 -- Problem 4: Find the number of elements in a list.
-myLenght :: [a] -> Int
-myLenght [] = 0
-myLenght [x] = 1
-myLenght (_:xs) = 1 + myLenght xs
+myLength:: [a] -> Int
+myLength [] = 0
+myLength [x] = 1
+myLength (_:xs) = 1 + myLength xs
 
 -- Problem 5: Reverse a list.
 myReverse :: [a] -> [a]
@@ -60,4 +60,8 @@ pack [x] = [[x]]
 pack (x:xs) 
     | x `elem` (head (pack xs)) = (x : (head $ pack xs)) : (tail $ pack xs)
     | otherwise                 = [[x]] ++ pack (xs)
+
+-- Problem 10: Run-length encoding of a list.
+encode :: (Eq a) => [a] -> [(Int, a)]
+encode xs = map (\x -> (length x, head x)) $ pack xs
 
