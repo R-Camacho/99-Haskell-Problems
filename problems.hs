@@ -65,3 +65,9 @@ pack (x:xs)
 encode :: (Eq a) => [a] -> [(Int, a)]
 encode xs = map (\x -> (length x, head x)) $ pack xs
 
+-- Problem 11: Modified run-length encoding.
+data EncodedItem a = Single a | Multiple Int a
+    deriving Show
+encodeModified :: (Eq a) => [a] -> [EncodedItem a]
+encodeModified xs = map (\x -> if length x == 1 then Single $ head x else Multiple (length x) (head x)) $ pack xs
+
