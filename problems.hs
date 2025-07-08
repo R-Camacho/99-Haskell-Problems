@@ -92,3 +92,12 @@ encodeDirect xs = encodeModified xs
 dupli :: [a] -> [a]
 dupli [] = []
 dupli (x:xs) = x : x : dupli xs
+
+-- Problem 15: Replicate the elements of a list a given number of times.
+repli :: [a] -> Int -> [a]
+repli _ 0      = []
+repli [] _     = []
+repli (x:xs) n = repliElem x n ++ repli xs n
+    where 
+        repliElem _ 0 = []
+        repliElem x n = x : repliElem x (n - 1)
