@@ -73,7 +73,6 @@ encodeModified xs = map (\x -> if length x == 1 then Single $ head x else Multip
 
 -- Problem 12: Decode a run-length encoded list.Solutions
 -- Given a run-length code list generated as specified in problem 11. Construct its uncompressed version.
-
 decodeModified :: [EncodedItem a] -> [a]
 decodeModified xs = concat $ map (\x -> replicate (getNumber x) (getElement x) ) xs
     where 
@@ -83,3 +82,13 @@ decodeModified xs = concat $ map (\x -> replicate (getNumber x) (getElement x) )
         getElement (Single x)     = x
         getElement (Multiple _ x) = x
 
+-- Problem 13: Run-length encoding of a list (direct solution).
+-- (I think it's the same as problem 11)
+-- TODO: review later
+encodeDirect :: (Eq a) => [a] -> [EncodedItem a]
+encodeDirect xs = encodeModified xs
+
+-- Problem 14: Duplicate the elements of a list.
+dupli :: [a] -> [a]
+dupli [] = []
+dupli (x:xs) = x : x : dupli xs
