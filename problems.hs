@@ -110,3 +110,7 @@ dropEvery xs n = dropHelper xs n
         dropHelper (x:xs) 1 = dropHelper xs n
         dropHelper (x:xs) m = x : dropHelper xs (m - 1) 
 
+-- Problem 17: Split a list into two parts; the length of the first part is given.
+split :: [a] -> Int -> ([a], [a])
+split xs n     = (take n xs, drop n xs) 
+
