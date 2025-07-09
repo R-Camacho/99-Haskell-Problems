@@ -127,3 +127,9 @@ rotate xs n
     | n < 0     = rotate (last xs : init xs) (n + 1)
     | otherwise = xs
     
+-- Problem 20: Remove the K'th element from a list.
+removeAt :: Int -> [a] -> (a, [a])
+removeAt n xs
+    | n >= 1 && n <= length xs = (xs !! (n - 1), take (n - 1) xs ++ drop n xs) 
+    | otherwise                = undefined
+
