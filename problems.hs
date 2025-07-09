@@ -117,5 +117,13 @@ split xs n     = (take n xs, drop n xs)
 -- Problem 18: Extract a slice from a list.
 slice :: [a] -> Int -> Int -> [a]
 slice xs n m 
-    n > k     = []
-    otherwise = take (m - n + 1) $ drop (n - 1) xs 
+    | n > m     = []
+    | otherwise = take (m - n + 1) $ drop (n - 1) xs 
+
+-- Problem 19: Rotate a list N places to the left.
+rotate :: [a] -> Int -> [a]
+rotate xs n
+    | n > 0     = rotate (tail xs ++ [head xs]) (n - 1)
+    | n < 0     = rotate (last xs : init xs) (n + 1)
+    | otherwise = xs
+    
