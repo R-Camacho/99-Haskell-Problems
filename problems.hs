@@ -101,3 +101,12 @@ repli (x:xs) n = repliElem x n ++ repli xs n
     where 
         repliElem _ 0 = []
         repliElem x n = x : repliElem x (n - 1)
+
+-- Problem 16: Drop every N'th element from a list.
+dropEvery :: [a] -> Int -> [a]
+dropEvery xs n = dropHelper xs n 
+    where 
+        dropHelper [] _   = []
+        dropHelper (x:xs) 1 = dropHelper xs n
+        dropHelper (x:xs) m = x : dropHelper xs (m - 1) 
+
